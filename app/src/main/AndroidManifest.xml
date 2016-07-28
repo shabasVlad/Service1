@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="shabasvladislav.com.service">
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -15,13 +15,17 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".PlayService"
+        <service
+            android:name=".PlayService"
             android:enabled="true">
         </service>
-        <receiver android:name=".BootBroadcast">
-            <intent-filter >
-                <action android:name="android.intent.action.BOOT_COMPLETED">
-                </action>
+
+        <receiver
+            android:name=".Boot"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
     </application>
