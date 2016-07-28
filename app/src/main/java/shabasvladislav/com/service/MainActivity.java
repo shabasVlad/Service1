@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+      private void method() {
+        String pgkname = getApplicationContext().getPackageName();
+        ComponentName componentToDisable = new ComponentName(pgkname,pgkname+".MainActivity");
+        getApplicationContext().getPackageManager().setComponentEnabledSetting(
+                componentToDisable,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
+        finish();
 
 }
